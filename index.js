@@ -33,7 +33,9 @@ const Authnticate=(req,res,next)=>{
     }
 
 }
-
+app.get("/",(req,res)=>{
+    res.status(200).json({message:"Welcome to Backend Server"})
+})
 app.use(LoginPostApi)
 app.use(Authnticate,verifyTokenRoute)
 app.use(Authnticate,Get)
