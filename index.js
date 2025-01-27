@@ -18,12 +18,13 @@ DbConection.connect((err)=>{
     console.log("Connection Succeed");
 })
 const Authnticate=(req,res,next)=>{
-    const token=req.headers.authorization
-    const splitdata=token?.split(" ")
+    const token=req?.headers?.authorization
+    const splitdata=token && token?.split(" ")[1]
 
-    if(splitdata[1]){
-       JwtAthoriztion(splitdata[1],process.env.KEY).then((resdata)=>{
-        req.tokenData=resdata
+
+    if(splitdata){
+       JwtAthoriztion(splitdata,process.env.KEY).then((resdata)=>{
+       req.tokenData=resdata
         next()
        }).catch((err)=>{
         console.log(err);
