@@ -1,4 +1,4 @@
-const bycript=require("bcrypt")
+const bycript=require("bcryptjs")
 const Encript=async (password)=>{
     if(password){
         const encPass= await bycript.hashSync(password,10)
